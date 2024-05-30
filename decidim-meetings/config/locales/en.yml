@@ -601,14 +601,15 @@ en:
           index:
             administrate: Administrate
             meeting: Meeting
-            questions: Questions
+            title: Poll
           index_admin:
             back_to_meeting: Back to meeting
-            title: Administrate
+            title: Administrate poll
             view_poll: View poll
         questions:
           closed_question:
-            question_results: Question results
+            question: Question
+            question_results: Results
           index:
             empty_questions: Throughout this meeting, some questions will be sent and you will be able to answer them. They will be displayed here.
           index_admin:
