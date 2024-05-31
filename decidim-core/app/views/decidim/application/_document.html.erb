@@ -8,7 +8,9 @@
     <% end %>
     <div class="card__list-metadata">
       <div><%= icon "file-text-line" %><%= document.file_type %></div>
-      <div><%= icon "scales-2-line" %><%= number_to_human_size(document.file_size) %></div>
+      <% if document.file? %>
+        <div><%= icon "scales-2-line" %><%= number_to_human_size(document.file_size) %></div>
+      <% end %>
     </div>
   </div>
   <%= link_to document.url,
