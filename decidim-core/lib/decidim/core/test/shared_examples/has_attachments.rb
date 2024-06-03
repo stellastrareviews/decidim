@@ -220,7 +220,7 @@ end
 shared_examples_for "has attachments tabs" do
   context "when it has attachments" do
     let!(:document) { create(:attachment, :with_pdf, attached_to:) }
-
+    let!(:link) { create(:attachment, :with_link, attached_to:) }
     let!(:image) { create(:attachment, attached_to:) }
 
     before do
@@ -231,6 +231,7 @@ shared_examples_for "has attachments tabs" do
       find("li [data-controls='panel-documents']").click
       within "#panel-documents" do
         expect(page).to have_content(translated(document.title))
+        expect(page).to have_content(translated(link.title))
       end
 
       find("li [data-controls='panel-images']").click
@@ -241,7 +242,7 @@ shared_examples_for "has attachments tabs" do
   end
 
   context "when are ordered by weight" do
-    let!(:last_document) { create(:attachment, :with_pdf, attached_to:, weight: 2) }
+    let!(:last_document) { create(:attachment, :with_link, attached_to:, weight: 2) }
     let!(:first_document) { create(:attachment, :with_pdf, attached_to:, weight: 1) }
     let!(:last_image) { create(:attachment, attached_to:, weight: 2) }
     let!(:first_image) { create(:attachment, attached_to:, weight: 1) }
