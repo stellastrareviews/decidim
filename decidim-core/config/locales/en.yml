@@ -360,6 +360,7 @@ en:
     application:
       document:
         download: Download file
+        visit_link: Visit link
       documents:
         component_documents: "%{name} documents"
         documents: Documents
