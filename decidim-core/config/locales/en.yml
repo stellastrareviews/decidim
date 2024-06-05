@@ -362,7 +362,9 @@ en:
         download: Download file
         visit_link: Visit link
       documents:
-        component_documents: "%{name} documents"
+        component_documents:
+          dummy: Dummy component documents
+          meetings: Meetings documents
         documents: Documents
         related_documents: Related documents
       photo:
