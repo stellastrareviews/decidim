@@ -34,7 +34,7 @@ module Decidim
         attr_reader :form
 
         def send_email
-          ProposalsValuatorMailer.notify_proposals_valuator(form.valuator_role.user, form.current_user, form.proposals).deliver_later
+          # ProposalsValuatorMailer.notify_proposals_valuator(form.valuator_role.user, form.current_user, form.proposals).deliver_later
         end
 
         def assign_proposals
