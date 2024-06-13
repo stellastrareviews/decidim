@@ -12,7 +12,7 @@ describe "Admin manages proposals valuators" do
   end
   let!(:valuator) { create(:user, organization:) }
   let!(:valuator_role) { create(:participatory_process_user_role, role: :valuator, user: valuator, participatory_process:) }
-  let!(:admin) { create(:user, :admin, organization: organization) }
+  let!(:admin) { create(:user, :admin, organization:) }
 
   include Decidim::ComponentPathHelper
 
@@ -42,7 +42,7 @@ describe "Admin manages proposals valuators" do
       before do
         perform_enqueued_jobs do
           within "#js-form-assign-proposals-to-valuator" do
-            select valuator.name, from: :valuator_role_id
+            tom_select("#assign_valuator_role_ids", option_id: valuator_role.id)
             click_on(id: "js-submit-assign-proposals-to-valuator")
           end
         end
@@ -118,12 +118,12 @@ describe "Admin manages proposals valuators" do
     context "when submitting the form" do
       before do
         within "#js-form-unassign-proposals-from-valuator" do
-          select valuator.name, from: :valuator_role_id
+          tom_select("#unassign_valuator_role_ids", option_id: valuator_role.id)
           click_on(id: "js-submit-unassign-proposals-from-valuator")
         end
       end
 
-      it "unassigns the proposals to the valuator" do
+      it "unassigns the proposals from the valuator" do
         expect(page).to have_content("Valuator unassigned from proposals successfully")
 
         within "tr", text: translated(proposal.title) do
