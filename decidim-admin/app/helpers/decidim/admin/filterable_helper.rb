@@ -117,9 +117,9 @@ module Decidim
       end
 
       def remove_all_filters_tag
-        link_to(url_for(blank_query_params), class: "label font-normal bg-transparent") do
-          concat t("decidim.admin.filters.remove_all_filters")
-          concat icon("delete-bin-line", aria_label: t("decidim.admin.filters.remove_all_filters"), role: "img")
+        link_to(url_for(blank_query_params), class: "label bg-transparent") do
+          concat t("decidim.admin.filters.remove_all")
+          concat icon("delete-bin-line", aria_label: t("decidim.admin.filters.remove_all"), role: "img")
         end
       end
 
