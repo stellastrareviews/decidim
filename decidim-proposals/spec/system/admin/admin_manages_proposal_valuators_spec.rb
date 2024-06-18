@@ -63,6 +63,11 @@ describe "Admin manages proposals valuators" do
         expect(last_email.body.encoded).to include("You've been assigned as a valuator")
         expect(last_email.body.encoded).to include(Decidim::ResourceLocatorPresenter.new(proposal).admin_url)
       end
+
+      it "displays log" do
+        visit decidim_admin.root_path
+        expect(page).to have_content("assigned the #{translated(proposal.title)} proposal to a valuator")
+      end
     end
   end
 

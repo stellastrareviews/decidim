@@ -1,3 +1,9 @@
+/**
+ * This file controls the behavior of the |File| and |Link| tabs in the
+ * attachment form. It disables the |File| tab when a link is present and
+ * vice versa.
+ */
+
 const getFileButton = (container) =>
   container.querySelector("button#trigger-file");
 const getLinkButton = (container) =>
