@@ -36,6 +36,7 @@ module Decidim
           transaction do
             form.proposals.flat_map do |proposal|
               find_assignment(proposal) || assign_proposal(proposal)
+              notify_valuator(proposal, form.valuator_role)
             end
           end
         end
@@ -54,6 +55,19 @@ module Decidim
             proposal:,
             valuator_role: form.valuator_role
           )
+        end
+
+        def notify_valuator(proposal, valuator_role)
+          return unless valuator_role.user.email_on_assigned_proposals?
+
+          data = {
+            event: "decidim.events.proposals.admin.proposal_assigned_to_valuator",
+            event_class: Decidim::Proposals::Admin::ProposalAssignedToValuatorEvent,
+            resource: proposal,
+            affected_users: [valuator_role.user]
+          }
+
+          Decidim::EventsManager.publish(**data)
         end
       end
     end
