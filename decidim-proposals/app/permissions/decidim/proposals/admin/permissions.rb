@@ -16,7 +16,6 @@ module Decidim
               can_assign_valuator_to_proposal?
             end
             can_export_proposals?
-            valuator_can_unassign_valuator_from_proposals?
 
             return permission_action
           end
